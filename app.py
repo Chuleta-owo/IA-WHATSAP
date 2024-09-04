@@ -11,6 +11,10 @@ TWILIO_AUTH_TOKEN = os.getenv('0bfdac3a779f6958ae8c66d98f6613dd')
 TWILIO_PHONE_NUMBER = os.getenv('+14155238886')
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
+@app.route('/')
+def home():
+    return "¡El servicio está funcionando!"
+
 @app.route('/sms', methods=['POST'])
 def sms_reply():
     """Responde a los mensajes entrantes de WhatsApp"""
@@ -23,7 +27,7 @@ def sms_reply():
     # Envía una respuesta
     client.messages.create(
         body=response_message,
-        from_=+14155238886,
+        from_=TWILIO_PHONE_NUMBER,
         to=from_number
     )
 
@@ -53,3 +57,4 @@ def read_pdf(pdf_path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
+
