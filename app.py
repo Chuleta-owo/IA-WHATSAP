@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Configura tus credenciales de Twilio
 TWILIO_ACCOUNT_SID = os.getenv('ACe3b30530004f5f0e00ae549afd10765c')
 TWILIO_AUTH_TOKEN = os.getenv('0bfdac3a779f6958ae8c66d98f6613dd')
-TWILIO_PHONE_NUMBER = os.getenv('14155238886')
+TWILIO_PHONE_NUMBER = os.getenv('+14155238886')
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 @app.route('/sms', methods=['POST'])
@@ -23,7 +23,7 @@ def sms_reply():
     # Envía una respuesta
     client.messages.create(
         body=response_message,
-        from_=TWILIO_PHONE_NUMBER,
+        from_=+14155238886,
         to=from_number
     )
 
@@ -52,4 +52,4 @@ def read_pdf(pdf_path):
     return text if text else "No se pudo extraer texto del PDF."
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
