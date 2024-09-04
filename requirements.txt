@@ -1,1 +1,3 @@
-PyPDF2==1.26.0\nTwilio==7.8.0\nFlask==2.0.1\n
+PyPDF2==1.26.0
+Twilio==7.8.0
+Flask==2.0.1
